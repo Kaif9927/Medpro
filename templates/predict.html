@@ -1,50 +1,104 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Disease Predictor</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Predictor - Medipro</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="/static/font-awesome.min.css">
+    <!-- Icofont CSS -->
+    <link rel="stylesheet" href="/static/icofont.css">
+    <!-- Normalize CSS -->
+    <link rel="stylesheet" href="/static/normalize.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="/static/responsive.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Disease Prediction</h2>
-        <form action="/predict" method="post">
-            <input type="text" name="name" placeholder="Patient Name" required>
-            <select name="symptom1" required>
-                <option value="">Select Symptom 1</option>
-                {% for symptom in symptoms %}
-                    <option value="{{ symptom }}">{{ symptom.replace('_', ' ') }}</option>
-                {% endfor %}
-            </select>
-            <select name="symptom2" required>
-                <option value="">Select Symptom 2</option>
-                {% for symptom in symptoms %}
-                    <option value="{{ symptom }}">{{ symptom.replace('_', ' ') }}</option>
-                {% endfor %}
-            </select>
-            <select name="symptom3" required>
-                <option value="">Select Symptom 3</option>
-                {% for symptom in symptoms %}
-                    <option value="{{ symptom }}">{{ symptom.replace('_', ' ') }}</option>
-                {% endfor %}
-            </select>
-            <select name="symptom4" required>
-                <option value="">Select Symptom 4</option>
-                {% for symptom in symptoms %}
-                    <option value="{{ symptom }}">{{ symptom.replace('_', ' ') }}</option>
-                {% endfor %}
-            </select>
-            <select name="symptom5" required>
-                <option value="">Select Symptom 5</option>
-                {% for symptom in symptoms %}
-                    <option value="{{ symptom }}">{{ symptom.replace('_', ' ') }}</option>
-                {% endfor %}
-            </select>
-            <button type="submit">Predict</button>
-        </form>
-        {% if prediction %}
-            <h3>Predicted Disease: {{ prediction }}</h3>
-        {% endif %}
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs overlay">
+        <div class="container">
+            <div class="bread-inner">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Disease Prediction</h2>
+                        <ul class="bread-list">
+                            <li><a href="/">Home</a></li>
+                            <li><i class="icofont-simple-right"></i></li>
+                            <li class="active">Predict</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Prediction Form -->
+    <section class="contact-us section">
+        <div class="container">
+            <div class="inner">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="contact-us-form">
+                            <h2>Disease Prediction Form</h2>
+                            <form class="form" action="/predict" method="post">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <input type="text" name="name" placeholder="Patient Name" required>
+                                        </div>
+                                    </div>
+                                    {% for i in range(1, 6) %}
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <select name="symptom{{i}}" required>
+                                                <option value="">Select Symptom {{i}}</option>
+                                                {% for symptom in symptoms %}
+                                                    <option value="{{ symptom }}">{{ symptom.replace('_', ' ').title() }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <button type="submit" class="btn">Predict Disease</button>
+                                        </div>
+                                    </div>
+                                    {% if prediction %}
+                                    <div class="col-12">
+                                        <div class="prediction-result">
+                                            <h3>Predicted Disease: {{ prediction }}</h3>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/jquery-migrate-3.0.0.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/modernizr.min.js"></script>
+    <script src="/static/js/jquery-nav.js"></script>
+    <script src="/static/js/slicknav.min.js"></script>
+    <script src="/static/js/jquery.counterup.min.js"></script>
+    <script src="/static/js/easing.js"></script>
+    <script src="/static/js/wow.js"></script>
+    <script src="/static/js/jquery.scrollUp.min.js"></script>
+    <script src="/static/js/jquery.magnific-popup.min.js"></script>
+    <script src="/static/js/main.js"></script>
 </body>
 </html>
