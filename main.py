@@ -230,6 +230,10 @@ def delete_file(filename):
         return redirect(url_for('index'))
     return "File not found", 404
 
+@app.route('/predict', methods=['GET', 'POST'])
+def predict():
+    return render_template('predict.html', symptoms=l1)
+
 @app.route('/signup-user-b', methods=['GET', 'POST'])
 def signup_user_b():
     if request.method == 'POST':
