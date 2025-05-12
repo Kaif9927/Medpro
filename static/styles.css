@@ -1,84 +1,123 @@
+
 /* General Styles */
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: #888;
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  background: #f9f9f9;
+  color: #666;
 }
 
-/* Form Container */
 .container {
-  max-width: 400px;
+  max-width: 500px;
   width: 100%;
   background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  text-align: center;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  margin: 80px auto;
 }
 
 .container h2 {
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: #1a76d1;
+  font-size: 32px;
+  color: #2C2D3F;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.container h2:after {
+  position: absolute;
+  content: "";
+  left: 50%;
+  bottom: 0;
+  height: 3px;
+  width: 50px;
+  background: #1A76D1;
+  margin-left: -25px;
 }
 
 .container form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-}
-
-.container input,
-.container select,
-.container button {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: none;
-  outline: none;
+  gap: 20px;
 }
 
 .container input,
 .container select {
-  background: #888;
-  color: #ffffff;
+  width: 100%;
+  height: 50px;
+  border: 1px solid #eee;
+  padding: 0 20px;
+  color: #666;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.container input:focus,
+.container select:focus {
+  border-color: #1A76D1;
+  outline: none;
 }
 
 .container button {
-  background-color: #fff;
-  color: #1A76D1;
+  background: #1A76D1;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
 }
 
 .container button:hover {
-  background-color: #1A76D1;
+  background: #2C2D3F;
 }
 
 .container a {
-  color: #ffcc00;
+  color: #1A76D1;
   text-decoration: none;
+  text-align: center;
+  display: block;
+  margin-top: 20px;
   font-size: 14px;
 }
 
 .container a:hover {
-  text-decoration: underline;
+  color: #2C2D3F;
 }
 
-/* Responsive Layout */
+/* Predict Page Specific */
+.container select {
+  background: #fff;
+  cursor: pointer;
+}
+
+.container select option {
+  padding: 10px;
+}
+
+.container h3 {
+  margin-top: 20px;
+  color: #2C2D3F;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .container {
-      width: 90%;
+    width: 90%;
+    padding: 20px;
+    margin: 40px auto;
   }
-
-  h2 {
-      font-size: 20px;
+  
+  .container h2 {
+    font-size: 24px;
   }
 }
