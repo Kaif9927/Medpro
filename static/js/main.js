@@ -331,7 +331,7 @@ Version:	1.1
 		/*====================
 			Google Maps JS
 		======================*/
-		if(document.getElementById('map')) {
+		if(typeof GMaps !== 'undefined' && document.getElementById('map')) {
 			var map = new GMaps({
 				el: '#map',
 				lat: 23.011245,
