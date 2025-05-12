@@ -234,6 +234,51 @@ def delete_file(filename):
 def predict():
     return render_template('predict.html', symptoms=l1)
 
+@app.route('/appointment', methods=['GET', 'POST'])
+def appointment():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        phone = request.form.get('phone')
+        department = request.form.get('department')
+        doctor = request.form.get('doctor')
+        date = request.form.get('date')
+        message = request.form.get('message')
+        # Here you would typically save this to a database
+        return redirect(url_for('index'))
+    return render_template('index.html', scroll_to='appointment')
+
+@app.route('/about')
+def about():
+    return render_template('index.html', scroll_to='about')
+
+@app.route('/services')
+def services():
+    return render_template('index.html', scroll_to='services')
+
+@app.route('/doctors')
+def doctors():
+    return render_template('index.html', scroll_to='doctors')
+
+@app.route('/departments')
+def departments():
+    return render_template('index.html', scroll_to='departments')
+
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    if request.method == 'POST':
+        # Handle contact form submission
+        return redirect(url_for('index'))
+    return render_template('contact.html')
+
+@app.route('/portfolio-details')
+def portfolio_details():
+    return render_template('portfolio-details.html')
+
+@app.route('/blog-single')
+def blog_single():
+    return render_template('blog-single.html')
+
 @app.route('/signup-user-b', methods=['GET', 'POST'])
 def signup_user_b():
     if request.method == 'POST':

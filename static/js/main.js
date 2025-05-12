@@ -34,6 +34,34 @@ Version:	1.1
 =========================================*/ 
 (function($) {
     "use strict";
+
+    // Smooth scrolling for sections
+    $('.btn').on('click', function(e) {
+        var target = $(this).attr('href');
+        if(target && target.startsWith('#')) {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: $(target).offset().top - 70
+            }, 1500);
+        }
+    });
+
+    // Handle appointment form submission
+    $('#appointment-form').on('submit', function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '/appointment',
+            data: $(this).serialize(),
+            success: function(response) {
+                alert('Appointment booked successfully!');
+                window.location.reload();
+            },
+            error: function(error) {
+                alert('Error booking appointment. Please try again.');
+            }
+        });
+    });
      $(document).on('ready', function() {
 	
         jQuery(window).on('scroll', function() {
