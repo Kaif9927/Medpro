@@ -1,0 +1,304 @@
+{% extends "base.html" %}
+
+{% block title %}Our Departments - MedPro{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Hero Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card bg-warning text-white">
+                <div class="card-body text-center py-5">
+                    <h1 class="display-4 fw-bold mb-3">Our Departments</h1>
+                    <p class="lead mb-0">Comprehensive healthcare services across multiple specialized departments</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Departments -->
+    <div class="row mb-5">
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0"><i class="fas fa-heart me-2"></i>Cardiology</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Comprehensive cardiac care including diagnostic services, treatment planning, and follow-up care management.</p>
+                    <h6>Services:</h6>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check text-success me-2"></i>ECG and stress testing</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Echocardiography</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Cardiac catheterization</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Heart surgery</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Cardiac rehabilitation</li>
+                    </ul>
+                    <div class="text-center mt-3">
+                        <a href="{{ url_for('appointment') }}" class="btn btn-outline-danger btn-sm">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="fas fa-brain me-2"></i>Neurology</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Expert neurological care for conditions affecting the brain, spine, and nervous system.</p>
+                    <h6>Services:</h6>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check text-success me-2"></i>Neurological examinations</li>
+                        <li><i class="fas fa-check text-success me-2"></i>EMG and nerve studies</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Stroke treatment</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Epilepsy management</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Movement disorders</li>
+                    </ul>
+                    <div class="text-center mt-3">
+                        <a href="{{ url_for('appointment') }}" class="btn btn-outline-info btn-sm">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-warning text-white">
+                    <h5 class="mb-0"><i class="fas fa-bone me-2"></i>Orthopedics</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Specialized care for musculoskeletal conditions, injuries, and joint replacement procedures.</p>
+                    <h6>Services:</h6>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check text-success me-2"></i>Joint replacement surgery</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Sports medicine</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Spine surgery</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Hand and wrist surgery</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Physical therapy</li>
+                    </ul>
+                    <div class="text-center mt-3">
+                        <a href="{{ url_for('appointment') }}" class="btn btn-outline-warning btn-sm">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="fas fa-baby me-2"></i>Pediatrics</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Comprehensive healthcare for children from birth through adolescence.</p>
+                    <h6>Services:</h6>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check text-success me-2"></i>Well-child visits</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Vaccinations</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Growth monitoring</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Behavioral health</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Emergency care</li>
+                    </ul>
+                    <div class="text-center mt-3">
+                        <a href="{{ url_for('appointment') }}" class="btn btn-outline-success btn-sm">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0"><i class="fas fa-tooth me-2"></i>Dental Care</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Complete dental services including preventive care, restorative treatments, and cosmetic procedures.</p>
+                    <h6>Services:</h6>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check text-success me-2"></i>Preventive dentistry</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Restorative procedures</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Cosmetic treatments</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Orthodontics</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Emergency dental care</li>
+                    </ul>
+                    <div class="text-center mt-3">
+                        <a href="{{ url_for('appointment') }}" class="btn btn-outline-secondary btn-sm">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-eye me-2"></i>Ophthalmology</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Specialized eye care including vision correction, disease treatment, and surgical procedures.</p>
+                    <h6>Services:</h6>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check text-success me-2"></i>Eye examinations</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Vision correction</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Cataract surgery</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Glaucoma treatment</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Retinal care</li>
+                    </ul>
+                    <div class="text-center mt-3">
+                        <a href="{{ url_for('appointment') }}" class="btn btn-outline-primary btn-sm">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Departments -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h3 class="text-center mb-4">Additional Specialized Departments</h3>
+        </div>
+        
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="fas fa-dna me-2"></i>Oncology</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Comprehensive cancer care including diagnosis, treatment, and supportive care services.</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-arrow-right text-primary me-2"></i>Medical oncology</li>
+                        <li><i class="fas fa-arrow-right text-primary me-2"></i>Radiation therapy</li>
+                        <li><i class="fas fa-arrow-right text-primary me-2"></i>Surgical oncology</li>
+                        <li><i class="fas fa-arrow-right text-primary me-2"></i>Palliative care</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0"><i class="fas fa-ambulance me-2"></i>Emergency Medicine</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">24/7 emergency care for acute medical conditions and trauma.</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-arrow-right text-primary me-2"></i>Trauma care</li>
+                        <li><i class="fas fa-arrow-right text-primary me-2"></i>Critical care</li>
+                        <li><i class="fas fa-arrow-right text-primary me-2"></i>Urgent care</li>
+                        <li><i class="fas fa-arrow-right text-primary me-2"></i>Emergency surgery</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="fas fa-psychology me-2"></i>Psychiatry</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Mental health services including therapy, medication management, and crisis intervention.</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-arrow-right text-primary me-2"></i>Individual therapy</li>
+                        <li><i class="fas fa-arrow-right text-primary me-2"></i>Group therapy</li>
+                        <li><i class="fas fa-arrow-right text-primary me-2"></i>Medication management</li>
+                        <li><i class="fas fa-arrow-right text-primary me-2"></i>Crisis intervention</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="fas fa-stethoscope me-2"></i>General Medicine</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Primary care services for adults including preventive care and chronic disease management.</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-arrow-right text-primary me-2"></i>Annual check-ups</li>
+                        <li><i class="fas fa-arrow-right text-primary me-2"></i>Chronic disease management</li>
+                        <li><i class="fas fa-arrow-right text-primary me-2"></i>Preventive care</li>
+                        <li><i class="fas fa-arrow-right text-primary me-2"></i>Health screenings</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Department Statistics -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card bg-light">
+                <div class="card-body p-4">
+                    <h4 class="text-center mb-4">Department Statistics</h4>
+                    <div class="row text-center">
+                        <div class="col-md-3 mb-3">
+                            <h3 class="text-primary fw-bold">15+</h3>
+                            <p class="text-muted">Specialized Departments</p>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <h3 class="text-success fw-bold">50+</h3>
+                            <p class="text-muted">Specialist Doctors</p>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <h3 class="text-info fw-bold">100+</h3>
+                            <p class="text-muted">Support Staff</p>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <h3 class="text-warning fw-bold">24/7</h3>
+                            <p class="text-muted">Emergency Care</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Department Hours -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-clock me-2"></i>Department Operating Hours</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Regular Departments:</h6>
+                            <ul class="list-unstyled">
+                                <li><strong>Monday - Friday:</strong> 8:00 AM - 6:00 PM</li>
+                                <li><strong>Saturday:</strong> 9:00 AM - 2:00 PM</li>
+                                <li><strong>Sunday:</strong> Closed</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Emergency Services:</h6>
+                            <ul class="list-unstyled">
+                                <li><strong>Emergency Department:</strong> 24/7</li>
+                                <li><strong>Trauma Center:</strong> 24/7</li>
+                                <li><strong>Critical Care:</strong> 24/7</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card bg-primary text-white text-center">
+                <div class="card-body py-5">
+                    <h3 class="mb-3">Need to Visit a Specific Department?</h3>
+                    <p class="lead mb-4">Book an appointment with the department that best fits your healthcare needs.</p>
+                    <a href="{{ url_for('appointment') }}" class="btn btn-light btn-lg px-4 me-3">Book Appointment</a>
+                    <a href="{{ url_for('contact') }}" class="btn btn-outline-light btn-lg px-4">Contact Department</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

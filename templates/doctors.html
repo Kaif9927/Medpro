@@ -1,0 +1,352 @@
+{% extends "base.html" %}
+
+{% block title %}Our Doctors - MedPro{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Hero Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card bg-info text-white">
+                <div class="card-body text-center py-5">
+                    <h1 class="display-4 fw-bold mb-3">Meet Our Doctors</h1>
+                    <p class="lead mb-0">Experienced healthcare professionals dedicated to providing exceptional patient care</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Doctors -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h3 class="text-center mb-4">Featured Specialists</h3>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 text-center">
+                <div class="card-body p-4">
+                    <div class="mb-3">
+                        <i class="fas fa-user-md text-primary" style="font-size: 4rem;"></i>
+                    </div>
+                    <h5>Dr. Sarah Johnson</h5>
+                    <p class="text-muted">Cardiologist</p>
+                    <p class="small text-muted">Board-certified cardiologist with 15+ years of experience in treating heart conditions and cardiovascular diseases.</p>
+                    <div class="d-flex justify-content-center gap-2">
+                        <span class="badge bg-primary">Cardiology</span>
+                        <span class="badge bg-secondary">Heart Surgery</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 text-center">
+                <div class="card-body p-4">
+                    <div class="mb-3">
+                        <i class="fas fa-user-md text-success" style="font-size: 4rem;"></i>
+                    </div>
+                    <h5>Dr. Michael Chen</h5>
+                    <p class="text-muted">Neurologist</p>
+                    <p class="small text-muted">Specialist in neurological disorders with expertise in stroke treatment, epilepsy, and movement disorders.</p>
+                    <div class="d-flex justify-content-center gap-2">
+                        <span class="badge bg-success">Neurology</span>
+                        <span class="badge bg-info">Stroke Care</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 text-center">
+                <div class="card-body p-4">
+                    <div class="mb-3">
+                        <i class="fas fa-user-md text-warning" style="font-size: 4rem;"></i>
+                    </div>
+                    <h5>Dr. Emily Rodriguez</h5>
+                    <p class="text-muted">Orthopedic Surgeon</p>
+                    <p class="small text-muted">Expert in joint replacement, sports medicine, and minimally invasive orthopedic procedures.</p>
+                    <div class="d-flex justify-content-center gap-2">
+                        <span class="badge bg-warning">Orthopedics</span>
+                        <span class="badge bg-danger">Sports Medicine</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Department-wise Doctors -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h3 class="text-center mb-4">Doctors by Department</h3>
+        </div>
+        
+        <!-- Cardiology -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0"><i class="fas fa-heart me-2"></i>Cardiology</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-user-md text-danger"></i>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-1">Dr. Sarah Johnson</h6>
+                            <p class="mb-1 small text-muted">Chief of Cardiology</p>
+                            <p class="mb-0 small">Specializes in interventional cardiology and heart failure management</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-user-md text-danger"></i>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-1">Dr. Robert Wilson</h6>
+                            <p class="mb-1 small text-muted">Cardiologist</p>
+                            <p class="mb-0 small">Expert in electrophysiology and cardiac rhythm disorders</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-user-md text-danger"></i>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-1">Dr. Lisa Thompson</h6>
+                            <p class="mb-1 small text-muted">Cardiologist</p>
+                            <p class="mb-0 small">Specializes in preventive cardiology and cardiac imaging</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Neurology -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="fas fa-brain me-2"></i>Neurology</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-user-md text-info"></i>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-1">Dr. Michael Chen</h6>
+                            <p class="mb-1 small text-muted">Chief of Neurology</p>
+                            <p class="mb-0 small">Expert in stroke treatment and neurocritical care</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-user-md text-info"></i>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-1">Dr. Jennifer Davis</h6>
+                            <p class="mb-1 small text-muted">Neurologist</p>
+                            <p class="mb-0 small">Specializes in epilepsy and seizure disorders</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-user-md text-info"></i>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-1">Dr. David Brown</h6>
+                            <p class="mb-1 small text-muted">Neurologist</p>
+                            <p class="mb-0 small">Expert in movement disorders and Parkinson's disease</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Orthopedics -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-warning text-white">
+                    <h5 class="mb-0"><i class="fas fa-bone me-2"></i>Orthopedics</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-user-md text-warning"></i>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-1">Dr. Emily Rodriguez</h6>
+                            <p class="mb-1 small text-muted">Chief of Orthopedics</p>
+                            <p class="mb-0 small">Expert in joint replacement and sports medicine</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-user-md text-warning"></i>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-1">Dr. James Miller</h6>
+                            <p class="mb-1 small text-muted">Orthopedic Surgeon</p>
+                            <p class="mb-0 small">Specializes in spine surgery and back pain treatment</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-user-md text-warning"></i>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-1">Dr. Amanda Garcia</h6>
+                            <p class="mb-1 small text-muted">Orthopedic Surgeon</p>
+                            <p class="mb-0 small">Expert in hand and wrist surgery</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pediatrics -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="fas fa-baby me-2"></i>Pediatrics</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-user-md text-success"></i>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-1">Dr. Maria Lopez</h6>
+                            <p class="mb-1 small text-muted">Chief of Pediatrics</p>
+                            <p class="mb-0 small">Expert in general pediatrics and child development</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-user-md text-success"></i>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-1">Dr. Kevin Park</h6>
+                            <p class="mb-1 small text-muted">Pediatrician</p>
+                            <p class="mb-0 small">Specializes in adolescent medicine and mental health</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-user-md text-success"></i>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-1">Dr. Rachel Green</h6>
+                            <p class="mb-1 small text-muted">Pediatrician</p>
+                            <p class="mb-0 small">Expert in pediatric emergency medicine</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Doctor Search -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-search me-2"></i>Find a Doctor</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="specialty" class="form-label">Specialty</label>
+                            <select class="form-select" id="specialty">
+                                <option value="">All Specialties</option>
+                                <option value="cardiology">Cardiology</option>
+                                <option value="neurology">Neurology</option>
+                                <option value="orthopedics">Orthopedics</option>
+                                <option value="pediatrics">Pediatrics</option>
+                                <option value="dermatology">Dermatology</option>
+                                <option value="oncology">Oncology</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="location" class="form-label">Location</label>
+                            <select class="form-select" id="location">
+                                <option value="">All Locations</option>
+                                <option value="main">Main Campus</option>
+                                <option value="north">North Branch</option>
+                                <option value="south">South Branch</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="availability" class="form-label">Availability</label>
+                            <select class="form-select" id="availability">
+                                <option value="">Any Time</option>
+                                <option value="morning">Morning</option>
+                                <option value="afternoon">Afternoon</option>
+                                <option value="evening">Evening</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary" onclick="searchDoctors()">
+                            <i class="fas fa-search me-2"></i>Search Doctors
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Choose Our Doctors -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h3 class="text-center mb-4">Why Choose Our Doctors?</h3>
+        </div>
+        <div class="col-md-3 text-center mb-4">
+            <i class="fas fa-graduation-cap text-primary mb-3" style="font-size: 2.5rem;"></i>
+            <h5>Expert Qualifications</h5>
+            <p class="text-muted small">All our doctors are board-certified with advanced training and certifications.</p>
+        </div>
+        <div class="col-md-3 text-center mb-4">
+            <i class="fas fa-clock text-success mb-3" style="font-size: 2.5rem;"></i>
+            <h5>Convenient Hours</h5>
+            <p class="text-muted small">Extended hours and weekend appointments to fit your busy schedule.</p>
+        </div>
+        <div class="col-md-3 text-center mb-4">
+            <i class="fas fa-comments text-info mb-3" style="font-size: 2.5rem;"></i>
+            <h5>Patient Communication</h5>
+            <p class="text-muted small">Clear communication and patient education for better health outcomes.</p>
+        </div>
+        <div class="col-md-3 text-center mb-4">
+            <i class="fas fa-heart text-danger mb-3" style="font-size: 2.5rem;"></i>
+            <h5>Compassionate Care</h5>
+            <p class="text-muted small">Personalized, compassionate care that puts patients first.</p>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card bg-primary text-white text-center">
+                <div class="card-body py-5">
+                    <h3 class="mb-3">Ready to Schedule an Appointment?</h3>
+                    <p class="lead mb-4">Book a consultation with one of our experienced healthcare professionals today.</p>
+                    <a href="{{ url_for('appointment') }}" class="btn btn-light btn-lg px-4 me-3">Book Appointment</a>
+                    <a href="{{ url_for('contact') }}" class="btn btn-outline-light btn-lg px-4">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function searchDoctors() {
+    const specialty = document.getElementById('specialty').value;
+    const location = document.getElementById('location').value;
+    const availability = document.getElementById('availability').value;
+    
+    // This would typically make an API call to search doctors
+    alert(`Searching for doctors with:\nSpecialty: ${specialty || 'All'}\nLocation: ${location || 'All'}\nAvailability: ${availability || 'Any'}`);
+}
+</script>
+{% endblock %}
+

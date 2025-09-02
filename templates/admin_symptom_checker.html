@@ -1,0 +1,367 @@
+{% extends "base.html" %}
+
+{% block title %}AI Symptom Checker - Admin{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card bg-info text-white">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h2 class="mb-2">AI Symptom Checker</h2>
+                            <p class="mb-0">Advanced AI-powered symptom analysis and disease prediction system</p>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <i class="fas fa-brain" style="font-size: 4rem; opacity: 0.8;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Model Information -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-robot me-2"></i>AI Model Information</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 text-center">
+                            <i class="fas fa-brain text-primary mb-2" style="font-size: 2rem;"></i>
+                            <h6>Algorithm</h6>
+                            <p class="text-muted small">Random Forest Classifier</p>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <i class="fas fa-database text-success mb-2" style="font-size: 2rem;"></i>
+                            <h6>Training Data</h6>
+                            <p class="text-muted small">Medical Symptom Dataset</p>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <i class="fas fa-chart-line text-info mb-2" style="font-size: 2rem;"></i>
+                            <h6>Accuracy</h6>
+                            <p class="text-muted small">High Precision</p>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <i class="fas fa-clock text-warning mb-2" style="font-size: 2rem;"></i>
+                            <h6>Response Time</h6>
+                            <p class="text-muted small">Real-time Analysis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Symptom Checker Interface -->
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-stethoscope me-2"></i>Symptom Analysis</h5>
+                </div>
+                <div class="card-body">
+                    <form id="symptomForm">
+                        <div class="mb-3">
+                            <label class="form-label">Select Symptoms (up to 5):</label>
+                            <div class="row" id="symptomGrid">
+                                <!-- Symptoms will be loaded dynamically -->
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="age" class="form-label">Patient Age (Optional)</label>
+                            <input type="number" class="form-control" id="age" min="0" max="120" placeholder="Enter age">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="gender" class="form-label">Gender (Optional)</label>
+                            <select class="form-select" id="gender">
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-search me-2"></i>Analyze Symptoms
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Selected Symptoms -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="mb-0"><i class="fas fa-list me-2"></i>Selected Symptoms</h6>
+                </div>
+                <div class="card-body">
+                    <div id="selectedSymptoms">
+                        <p class="text-muted text-center">No symptoms selected</p>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button class="btn btn-sm btn-outline-danger" onclick="clearSymptoms()">
+                            <i class="fas fa-trash me-1"></i>Clear All
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Section -->
+    <div class="row" id="resultsSection" style="display: none;">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Analysis Results</h5>
+                </div>
+                <div class="card-body">
+                    <div id="analysisResults">
+                        <!-- Results will be displayed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Model Statistics -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-chart-pie me-2"></i>Model Statistics</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <h4 class="text-primary">40+</h4>
+                                <p class="text-muted">Diseases Supported</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <h4 class="text-success">132</h4>
+                                <p class="text-muted">Symptoms Available</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <h4 class="text-info">5</h4>
+                                <p class="text-muted">Max Symptoms per Analysis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Sample symptoms data (in a real app, this would come from the backend)
+const symptoms = [
+    'fever', 'headache', 'cough', 'fatigue', 'nausea', 'vomiting', 'diarrhea',
+    'abdominal_pain', 'chest_pain', 'shortness_of_breath', 'dizziness',
+    'muscle_pain', 'joint_pain', 'skin_rash', 'sore_throat', 'runny_nose',
+    'congestion', 'sneezing', 'itchy_eyes', 'weight_loss', 'weight_gain',
+    'loss_of_appetite', 'insomnia', 'anxiety', 'depression', 'memory_loss',
+    'confusion', 'seizures', 'numbness', 'tingling', 'swelling', 'bruising',
+    'bleeding', 'pale_skin', 'yellow_skin', 'dark_urine', 'frequent_urination',
+    'painful_urination', 'back_pain', 'neck_pain', 'stiff_neck'
+];
+
+let selectedSymptoms = [];
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadSymptoms();
+    setupFormHandlers();
+});
+
+function loadSymptoms() {
+    const grid = document.getElementById('symptomGrid');
+    grid.innerHTML = '';
+    
+    symptoms.forEach((symptom, index) => {
+        const col = document.createElement('div');
+        col.className = 'col-md-3 col-sm-4 col-6 mb-2';
+        
+        const checkbox = document.createElement('div');
+        checkbox.className = 'form-check';
+        checkbox.innerHTML = `
+            <input class="form-check-input" type="checkbox" value="${symptom}" id="symptom_${index}" 
+                   onchange="toggleSymptom('${symptom}')">
+            <label class="form-check-label small" for="symptom_${index}">
+                ${symptom.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+            </label>
+        `;
+        
+        col.appendChild(checkbox);
+        grid.appendChild(col);
+    });
+}
+
+function setupFormHandlers() {
+    document.getElementById('symptomForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        analyzeSymptoms();
+    });
+}
+
+function toggleSymptom(symptom) {
+    if (selectedSymptoms.includes(symptom)) {
+        selectedSymptoms = selectedSymptoms.filter(s => s !== symptom);
+    } else {
+        if (selectedSymptoms.length >= 5) {
+            alert('Maximum 5 symptoms allowed');
+            document.querySelector(`input[value="${symptom}"]`).checked = false;
+            return;
+        }
+        selectedSymptoms.push(symptom);
+    }
+    updateSelectedSymptoms();
+}
+
+function updateSelectedSymptoms() {
+    const container = document.getElementById('selectedSymptoms');
+    
+    if (selectedSymptoms.length === 0) {
+        container.innerHTML = '<p class="text-muted text-center">No symptoms selected</p>';
+        return;
+    }
+    
+    container.innerHTML = selectedSymptoms.map(symptom => `
+        <span class="badge bg-primary me-1 mb-1">
+            ${symptom.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+            <button type="button" class="btn-close btn-close-white ms-1" 
+                    onclick="removeSymptom('${symptom}')" style="font-size: 0.7em;"></button>
+        </span>
+    `).join('');
+}
+
+function removeSymptom(symptom) {
+    selectedSymptoms = selectedSymptoms.filter(s => s !== symptom);
+    document.querySelector(`input[value="${symptom}"]`).checked = false;
+    updateSelectedSymptoms();
+}
+
+function clearSymptoms() {
+    selectedSymptoms = [];
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+    updateSelectedSymptoms();
+}
+
+function analyzeSymptoms() {
+    if (selectedSymptoms.length === 0) {
+        alert('Please select at least one symptom');
+        return;
+    }
+    
+    // Show loading state
+    const resultsSection = document.getElementById('resultsSection');
+    const analysisResults = document.getElementById('analysisResults');
+    
+    resultsSection.style.display = 'block';
+    analysisResults.innerHTML = `
+        <div class="text-center">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Analyzing...</span>
+            </div>
+            <p class="mt-2">Analyzing symptoms with AI...</p>
+        </div>
+    `;
+    
+    // Simulate AI analysis (in a real app, this would be an AJAX call)
+    setTimeout(() => {
+        const mockResults = generateMockResults();
+        displayResults(mockResults);
+    }, 2000);
+}
+
+function generateMockResults() {
+    // Mock results for demonstration
+    const diseases = [
+        { name: 'Common Cold', confidence: 85, description: 'Viral infection of the upper respiratory tract' },
+        { name: 'Influenza', confidence: 70, description: 'Viral infection affecting the respiratory system' },
+        { name: 'Allergic Rhinitis', confidence: 60, description: 'Allergic reaction causing nasal inflammation' },
+        { name: 'Sinusitis', confidence: 45, description: 'Inflammation of the sinuses' }
+    ];
+    
+    return {
+        selectedSymptoms: selectedSymptoms,
+        age: document.getElementById('age').value,
+        gender: document.getElementById('gender').value,
+        diseases: diseases,
+        recommendations: [
+            'Rest and stay hydrated',
+            'Monitor symptoms for worsening',
+            'Consider over-the-counter medications',
+            'Consult a healthcare provider if symptoms persist'
+        ]
+    };
+}
+
+function displayResults(results) {
+    const analysisResults = document.getElementById('analysisResults');
+    
+    analysisResults.innerHTML = `
+        <div class="row">
+            <div class="col-md-8">
+                <h6>Selected Symptoms:</h6>
+                <p>${results.selectedSymptoms.map(s => s.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())).join(', ')}</p>
+                
+                <h6 class="mt-4">Possible Conditions:</h6>
+                ${results.diseases.map(disease => `
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="card-title">${disease.name}</h6>
+                                    <p class="card-text small text-muted">${disease.description}</p>
+                                </div>
+                                <div class="text-end">
+                                    <span class="badge bg-${getConfidenceColor(disease.confidence)} fs-6">
+                                        ${disease.confidence}%
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="col-md-4">
+                <h6>Recommendations:</h6>
+                <ul class="list-unstyled">
+                    ${results.recommendations.map(rec => `<li><i class="fas fa-check text-success me-2"></i>${rec}</li>`).join('')}
+                </ul>
+                
+                <div class="alert alert-warning mt-3">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <strong>Disclaimer:</strong> This is for informational purposes only. Always consult a healthcare professional for medical advice.
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function getConfidenceColor(confidence) {
+    if (confidence >= 80) return 'success';
+    if (confidence >= 60) return 'warning';
+    return 'danger';
+}
+</script>
+{% endblock %}
+

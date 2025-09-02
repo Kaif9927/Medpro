@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+{% block title %}Add User - Admin{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h3 class="mb-0">
+                        <i class="fas fa-user-shield me-2"></i>Create Admin User
+                    </h3>
+                    <p class="mb-0 mt-2">Create new admin or regular user accounts (Admin Only)</p>
+                </div>
+                <div class="card-body p-4">
+                    <form method="POST">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="username" class="form-label">Username *</label>
+                                    <input type="text" class="form-control" id="username" name="username" required>
+                                    <div class="form-text">Choose a unique username</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <div class="form-text">Valid email address required</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password *</label>
+                                    <input type="password" class="form-control" id="password" name="password" required minlength="6">
+                                    <div class="form-text">Minimum 6 characters</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="user_type" class="form-label">User Type *</label>
+                                    <select class="form-select" id="user_type" name="user_type" required>
+                                        <option value="">Select User Type</option>
+                                        <option value="A">Type A - Admin (Full Access)</option>
+                                        <option value="B">Type B - Regular User (Limited Access)</option>
+                                    </select>
+                                    <div class="form-text">Choose appropriate access level</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- User Type Information -->
+                        <div class="mb-4">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6><i class="fas fa-info-circle me-2"></i>User Type Information:</h6>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="d-flex align-items-start">
+                                                <i class="fas fa-user-shield text-primary me-2 mt-1"></i>
+                                                <div>
+                                                    <strong>Type A (Admin):</strong>
+                                                    <ul class="list-unstyled small text-muted">
+                                                        <li>• Full system access</li>
+                                                        <li>• User management</li>
+                                                        <li>• All features available</li>
+                                                        <li>• Admin dashboard access</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="d-flex align-items-start">
+                                                <i class="fas fa-user text-secondary me-2 mt-1"></i>
+                                                <div>
+                                                    <strong>Type B (Regular User):</strong>
+                                                    <ul class="list-unstyled small text-muted">
+                                                        <li>• Basic features access</li>
+                                                        <li>• File upload/management</li>
+                                                        <li>• Appointment booking</li>
+                                                        <li>• Disease prediction</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="{{ url_for('admin_users') }}" class="btn btn-secondary me-md-2">
+                                <i class="fas fa-arrow-left me-2"></i>Back to Users
+                            </a>
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-user-plus me-2"></i>Create User
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- Quick Actions -->
+                    <div class="mt-4 p-3 bg-info bg-opacity-10 rounded">
+                        <h6><i class="fas fa-lightbulb me-2"></i>Quick Tips:</h6>
+                        <ul class="mb-0 small">
+                            <li>Use strong passwords for admin accounts</li>
+                            <li>Type A users have full system access</li>
+                            <li>Type B users have limited access to basic features</li>
+                            <li>All users can be managed from the Users page</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Password strength indicator
+    const passwordInput = document.getElementById('password');
+    const userTypeSelect = document.getElementById('user_type');
+    
+    passwordInput.addEventListener('input', function() {
+        const password = this.value;
+        const strength = getPasswordStrength(password);
+        updatePasswordStrength(strength);
+    });
+    
+    userTypeSelect.addEventListener('change', function() {
+        const selectedType = this.value;
+        if (selectedType === 'A') {
+            // Show warning for admin accounts
+            showAdminWarning();
+        } else {
+            hideAdminWarning();
+        }
+    });
+});
+
+function getPasswordStrength(password) {
+    let strength = 0;
+    if (password.length >= 6) strength++;
+    if (password.length >= 8) strength++;
+    if (/[A-Z]/.test(password)) strength++;
+    if (/[0-9]/.test(password)) strength++;
+    if (/[^A-Za-z0-9]/.test(password)) strength++;
+    return strength;
+}
+
+function updatePasswordStrength(strength) {
+    const strengthText = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong'];
+    const strengthColors = ['danger', 'warning', 'info', 'success', 'success'];
+    
+    // This could be enhanced with a visual strength indicator
+    console.log('Password strength:', strengthText[strength] || 'Very Weak');
+}
+
+function showAdminWarning() {
+    // This could show a warning about admin privileges
+    console.log('Admin account selected - ensure strong password');
+}
+
+function hideAdminWarning() {
+    console.log('Regular user account selected');
+}
+</script>
+{% endblock %}
+

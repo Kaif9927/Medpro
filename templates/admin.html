@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - MedPro{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <h2 class="mb-2">Admin Dashboard</h2>
+                            <p class="mb-3">Welcome back, {{ current_user.username }}! Manage your healthcare system.</p>
+                            <a href="{{ url_for('admin_add_user') }}" class="btn btn-light btn-lg">
+                                <i class="fas fa-user-shield me-2"></i>Create New Admin User
+                            </a>
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <i class="fas fa-user-shield" style="font-size: 4rem; opacity: 0.8;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <i class="fas fa-users text-primary mb-3" style="font-size: 2.5rem;"></i>
+                    <h3 class="text-primary">{{ total_users }}</h3>
+                    <h6>Total Users</h6>
+                    <p class="text-muted small">All registered users</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <i class="fas fa-user-friends text-success mb-3" style="font-size: 2.5rem;"></i>
+                    <h3 class="text-success">{{ user_b_count }}</h3>
+                    <h6>User B Accounts</h6>
+                    <p class="text-muted small">Secondary users</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <i class="fas fa-calendar-check text-info mb-3" style="font-size: 2.5rem;"></i>
+                    <h3 class="text-info">{{ total_appointments }}</h3>
+                    <h6>Appointments</h6>
+                    <p class="text-muted small">Total bookings</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <i class="fas fa-file-medical text-warning mb-3" style="font-size: 2.5rem;"></i>
+                    <h3 class="text-warning">{{ total_files }}</h3>
+                    <h6>Files Uploaded</h6>
+                    <p class="text-muted small">Medical documents</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-bolt me-2"></i>Quick Actions</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <a href="{{ url_for('admin_add_user') }}" class="btn btn-primary w-100 btn-lg">
+                                <i class="fas fa-user-shield me-2"></i>Create Admin User
+                            </a>
+                            <small class="text-muted d-block mt-1">Create new admin or regular users</small>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a href="{{ url_for('admin_users') }}" class="btn btn-success w-100">
+                                <i class="fas fa-users me-2"></i>Manage Users
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a href="{{ url_for('admin_symptom_checker') }}" class="btn btn-info w-100">
+                                <i class="fas fa-brain me-2"></i>AI Symptom Checker
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a href="{{ url_for('predict') }}" class="btn btn-warning w-100">
+                                <i class="fas fa-stethoscope me-2"></i>Disease Prediction
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Users -->
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0"><i class="fas fa-clock me-2"></i>Recent Users</h5>
+                    <a href="{{ url_for('admin_users') }}" class="btn btn-sm btn-outline-primary">View All</a>
+                </div>
+                <div class="card-body">
+                    {% if recent_users %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>Email</th>
+                                        <th>Type</th>
+                                        <th>Joined</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for user in recent_users %}
+                                    <tr>
+                                        <td>
+                                            <i class="fas fa-user me-2"></i>{{ user.username }}
+                                        </td>
+                                        <td>{{ user.email }}</td>
+                                        <td>
+                                            <span class="badge bg-{{ 'primary' if user.user_type == 'A' else 'secondary' }}">
+                                                {{ user.user_type }}
+                                            </span>
+                                        </td>
+                                        <td>{{ user.created_at.strftime('%Y-%m-%d') }}</td>
+                                        <td>
+                                            <span class="badge bg-{{ 'success' if user.is_active else 'danger' }}">
+                                                {{ 'Active' if user.is_active else 'Inactive' }}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <p class="text-muted text-center">No users found</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- User B Management -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="mb-0"><i class="fas fa-user-friends me-2"></i>User B Management</h6>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <h4 class="text-success">{{ user_b_count }}</h4>
+                        <p class="text-muted">User B Accounts</p>
+                    </div>
+                    
+                    {% if pending_users %}
+                        <h6>Recent User B Accounts:</h6>
+                        {% for user in pending_users[:5] %}
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fas fa-user-circle text-secondary me-2"></i>
+                            <div class="flex-grow-1">
+                                <small class="fw-bold">{{ user.username }}</small><br>
+                                <small class="text-muted">{{ user.email }}</small>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="text-muted text-center small">No User B accounts yet</p>
+                    {% endif %}
+                    
+                    <div class="text-center mt-3">
+                        <a href="{{ url_for('admin_add_user') }}" class="btn btn-success btn-sm">
+                            <i class="fas fa-plus me-1"></i>Add User B
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Information -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>System Information</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Admin Features:</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>User Management</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Add/Remove Users</li>
+                                <li><i class="fas fa-check text-success me-2"></i>System Statistics</li>
+                                <li><i class="fas fa-check text-success me-2"></i>AI Symptom Checker</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>User Types:</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-user-shield text-primary me-2"></i><strong>Type A:</strong> Full Admin Access</li>
+                                <li><i class="fas fa-user text-secondary me-2"></i><strong>Type B:</strong> Limited Access</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Auto-refresh statistics every 30 seconds
+setInterval(function() {
+    // This could be enhanced with AJAX calls to update stats
+    console.log('Admin dashboard active');
+}, 30000);
+</script>
+{% endblock %}
+
