@@ -263,9 +263,6 @@ For support and questions:
 - Advanced AI features
 
 ---
-
-**Note**: This is a demonstration system. For production use in healthcare, ensure compliance with relevant regulations (HIPAA, GDPR, etc.) and implement additional security measures.
-
 =======
 # Medpro
 MedPro is an AI-powered healthcare management system offering smart disease prediction, appointment booking, file storage, and role-based access. Built with Flask, SQLite, and scikit-learn, it delivers secure, scalable, and user-friendly tools for patients and admins, bridging healthcare with intelligent technology.
