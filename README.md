@@ -234,18 +234,6 @@ Check console output for error messages and debugging information.
 4. Test thoroughly
 5. Submit a pull request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🆘 Support
-
-For support and questions:
-
-- Create an issue in the repository
-- Contact: support@medpro.com
-- Documentation: [Wiki](link-to-wiki)
-
 ## 🔄 Updates
 
 ### Version 2.0.0
